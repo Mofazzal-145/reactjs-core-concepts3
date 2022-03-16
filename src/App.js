@@ -38,33 +38,71 @@ function Friend(){
 
 
 // ex: 02
-function App() {
-  const products = [
-    {name:'Table', price: 1850},
-    {name:'Lamp', price: 150},
-    {name:'Pen', price: 50},
-  ]
-  return (
-    <div className="App">
-      {
-        products.map(product => <Product name={product.name} price={product.price}></Product>)
-      }
+// function App() {
+//   const products = [
+//     {name:'Table', price: 1850},
+//     {name:'Lamp', price: 150},
+//     {name:'Pen', price: 50},
+//   ]
+//   return (
+//     <div className="App">
+//       {
+//         products.map(product => <Product name={product.name} price={product.price}></Product>)
+//       }
 
-     {/* <Product name= 'mofu' profession='job Holder'></Product>
-     <Product name= 'mofazzal' profession='job Holder'></Product>
-     <Product name= 'jibon' profession='job Holder'></Product> */}
-    </div>
-  );
-}
+//      {/* <Product name= 'mofu' profession='job Holder'></Product>
+//      <Product name= 'mofazzal' profession='job Holder'></Product>
+//      <Product name= 'jibon' profession='job Holder'></Product> */}
+//     </div>
+//   );
+// }
 
-function Product(props) {
+// function Product(props) {
+//   return(
+//     <div className='product'>
+//       <h3>Name: {props.name} </h3>
+//       <p>Price:{props.price}</p>
+//       {/* <h5>Profession: {props.profession} </h5> */}
+//     </div>
+//   )
+// }
+
+
+
+
+// ex: 03
+
+function App (){
   return(
-    <div className='product'>
-      <h3>Name: {props.name} </h3>
-      <p>Price:{props.price}</p>
-      {/* <h5>Profession: {props.profession} </h5> */}
+    <div className='App'>
+      <Counter></Counter>
     </div>
   )
 }
 
+ function Counter() {
+   const [count, setCount] = useState(10);
+   const increaseCount = () => setCount(count + 1) ;
+   const decreaseCount = () => setCount(count - 1) ;
+    
+
+   // another way for increase
+   /* const increaseCount = () => {
+     const newCount = count + 1;
+     setCount(newCount); 
+   }*/
+   // another way for decrease
+   /* const decreaseCount = () => {
+     const newCount = count -1 ;
+     setCount(newCount)
+   } */
+
+   return (
+     <div>
+       <h1>Count:{count}</h1>
+       <button onClick={increaseCount}>Increase</button>
+       <button onClick={decreaseCount}>Decrease</button>
+     </div>
+   )
+ }
 export default App;
