@@ -36,3 +36,25 @@
     transform: rotate(360deg);
   }
 }
+
+.person {
+  border: 4px solid rgb(130, 117, 143);
+  margin: 20px;
+  padding: 20px;
+  background-color: #fb6169;
+  border-radius: 15px;
+}
+.friend {
+  border: 4px solid rgb(117, 122, 143);
+  margin: 20px;
+  padding: 20px;
+  background-color: #61fba6;
+  border-radius: 15px;
+}
+.product {
+  border: 4px solid blueviolet;
+  margin: 20px;
+  padding: 20px;
+  background-color: #61dafb;
+  border-radius: 15px;
+}
