@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 
 // ex : 01
@@ -72,37 +72,74 @@ function Friend(){
 
 // ex: 03
 
-function App (){
-  return(
+// function App (){
+//   return(
+//     <div className='App'>
+//       <Counter></Counter>
+//     </div>
+//   )
+// }
+
+//  function Counter() {
+//    const [count, setCount] = useState(10);
+//    const increaseCount = () => setCount(count + 1) ;
+//    const decreaseCount = () => setCount(count - 1) ;
+    
+
+//    // another way for increase
+//    /* const increaseCount = () => {
+//      const newCount = count + 1;
+//      setCount(newCount); 
+//    }*/
+//    // another way for decrease
+//    /* const decreaseCount = () => {
+//      const newCount = count -1 ;
+//      setCount(newCount)
+//    } */
+
+//    return (
+//      <div>
+//        <h1>Count:{count}</h1>
+//        <button onClick={increaseCount}>Increase</button>
+//        <button onClick={decreaseCount}>Decrease</button>
+//      </div>
+//    )
+//  }
+
+// ex: 04
+function App () {
+  return (
     <div className='App'>
-      <Counter></Counter>
+      <ExternalUsers></ExternalUsers>
     </div>
   )
 }
+function ExternalUsers () {
+  const [users, setUsers] = useState([]);
+  useEffect( () => {
+    fetch('https://jsonplaceholder.typicode.com/users')
+    .then(res => res.json())     
+    .then(data => setUsers(data))
+  },[]);
 
- function Counter() {
-   const [count, setCount] = useState(10);
-   const increaseCount = () => setCount(count + 1) ;
-   const decreaseCount = () => setCount(count - 1) ;
-    
-
-   // another way for increase
-   /* const increaseCount = () => {
-     const newCount = count + 1;
-     setCount(newCount); 
-   }*/
-   // another way for decrease
-   /* const decreaseCount = () => {
-     const newCount = count -1 ;
-     setCount(newCount)
-   } */
-
-   return (
+return (
+  <div>
+    <h2>External Users</h2>
+    <p>{users.length}</p>
+     {
+      //  users.map(user => <li> {user.username}</li>)
+       users.map(user => <User name={user.name} email={user.email}></User>)
+     }
+  </div>
+)
+}
+ function User (props){
+   return(
      <div>
-       <h1>Count:{count}</h1>
-       <button onClick={increaseCount}>Increase</button>
-       <button onClick={decreaseCount}>Decrease</button>
+       <h3>Name:{props.name}</h3>
+       <h5>Email:{props.email}</h5>
      </div>
    )
  }
+
 export default App;
