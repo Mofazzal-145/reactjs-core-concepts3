@@ -5,7 +5,7 @@ import { useState } from 'react';
 
 // ex : 01
 
-function App(){
+/* function App(){
   return(
     <div className='App'>
     <Person></Person>
@@ -34,6 +34,37 @@ function Friend(){
       <p>Jobber</p>
     </div>
   )
-} 
+}  */
+
+
+// ex: 02
+function App() {
+  const products = [
+    {name:'Table', price: 1850},
+    {name:'Lamp', price: 150},
+    {name:'Pen', price: 50},
+  ]
+  return (
+    <div className="App">
+      {
+        products.map(product => <Product name={product.name} price={product.price}></Product>)
+      }
+
+     {/* <Product name= 'mofu' profession='job Holder'></Product>
+     <Product name= 'mofazzal' profession='job Holder'></Product>
+     <Product name= 'jibon' profession='job Holder'></Product> */}
+    </div>
+  );
+}
+
+function Product(props) {
+  return(
+    <div className='product'>
+      <h3>Name: {props.name} </h3>
+      <p>Price:{props.price}</p>
+      {/* <h5>Profession: {props.profession} </h5> */}
+    </div>
+  )
+}
 
 export default App;
