@@ -107,39 +107,79 @@ function Friend(){
 //  }
 
 // ex: 04
-function App () {
+// function App () {
+//   return (
+//     <div className='App'>
+//       <ExternalUsers></ExternalUsers>
+//     </div>
+//   )
+// }
+// function ExternalUsers () {
+//   const [users, setUsers] = useState([]);
+//   useEffect( () => {
+//     fetch('https://jsonplaceholder.typicode.com/users')
+//     .then(res => res.json())     
+//     .then(data => setUsers(data))
+//   },[]);
+
+// return (
+//   <div>
+//     <h2>External Users</h2>
+//     <p>{users.length}</p>
+//      {
+//       //  users.map(user => <li> {user.username}</li>)
+//        users.map(user => <User name={user.name} email={user.email}></User>)
+//      }
+//   </div>
+// )
+// }
+//  function User (props){
+//    return(
+//      <div>
+//        <h3>Name:{props.name}</h3>
+//        <h5>Email:{props.email}</h5>
+//      </div>
+//    )
+//  }
+
+
+ // ex : 05
+ function App () {
   return (
     <div className='App'>
-      <ExternalUsers></ExternalUsers>
+     <LoadComments></LoadComments>
+    </div>
+  )
+   }
+
+ function LoadComments () {
+   const [comments, setComments] = useState([]);
+
+   useEffect( () =>{
+     fetch('https://jsonplaceholder.typicode.com/comments')
+     .then(res => res.json())
+     .then(data => setComments(data))
+   },[]);
+   
+   return (
+     <div>
+       <h2>Comments: {comments.length}</h2>
+       {
+         comments.map(comment => <Comment id={comment.id} name={comment.name} email={comment.email} body={comment.body}></Comment> )
+       }
+     </div>
+   )
+ } 
+
+function Comment(props){
+  return(
+    <div className='friend'>
+       <h2>ID:{props.id}</h2>
+       <h2>Name:{props.name}</h2>
+      <h2>Email:{props.email}</h2>
+      <p>Body:{props.body}</p>
     </div>
   )
 }
-function ExternalUsers () {
-  const [users, setUsers] = useState([]);
-  useEffect( () => {
-    fetch('https://jsonplaceholder.typicode.com/users')
-    .then(res => res.json())     
-    .then(data => setUsers(data))
-  },[]);
-
-return (
-  <div>
-    <h2>External Users</h2>
-    <p>{users.length}</p>
-     {
-      //  users.map(user => <li> {user.username}</li>)
-       users.map(user => <User name={user.name} email={user.email}></User>)
-     }
-  </div>
-)
-}
- function User (props){
-   return(
-     <div>
-       <h3>Name:{props.name}</h3>
-       <h5>Email:{props.email}</h5>
-     </div>
-   )
- }
 
 export default App;
